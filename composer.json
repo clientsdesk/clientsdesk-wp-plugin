@@ -1,0 +1,16 @@
+{
+    "name": "clientsdesk/clientsdesk-wp-plugin",
+    "description": "Clientsdesk.net Wordpress plugin. Serving Web Forms connection",
+    "type": "project",
+    "require": {
+        "clientsdesk/clientsdesk-api-client-php": "."
+    },
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Alex Baidan",
+            "email": "howtwizer@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
