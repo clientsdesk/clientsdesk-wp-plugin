@@ -5,7 +5,7 @@
   "require": {
     "clientsdesk/clientsdesk-api-client-php": "dev-master"
   },
-  "license": "GPL",
+  "license": "MIT",
   "authors": [
     {
       "name": "Alex Baidan",
