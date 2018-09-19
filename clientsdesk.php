@@ -43,21 +43,21 @@ if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
 /**
  * The code that runs during plugin activation
  */
-function activate_alecaddd_plugin()
+function activate_clientsdesk_plugin()
 {
     Inc\Base\Activate::activate();
 }
 
-register_activation_hook(__FILE__, 'activate_alecaddd_plugin');
+register_activation_hook(__FILE__, 'activate_clientsdesk_plugin');
 /**
  * The code that runs during plugin deactivation
  */
-function deactivate_alecaddd_plugin()
+function deactivate_clientsdesk_plugin()
 {
     Inc\Base\Deactivate::deactivate();
 }
 
-register_deactivation_hook(__FILE__, 'deactivate_alecaddd_plugin');
+register_deactivation_hook(__FILE__, 'deactivate_clientsdesk_plugin');
 /**
  * Initialize all the core classes of the plugin
  */
