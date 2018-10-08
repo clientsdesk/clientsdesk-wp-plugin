@@ -35,17 +35,49 @@ Copyright 2005-2015 Automattic, Inc.
 // Make sure we don't expose any info if called directly
 defined('ABSPATH') or die('Hey, what are you doing here? You silly human!');
 
-// Require once the Composer Autoload
-if (file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
-    require_once dirname(__FILE__) . '/vendor/autoload.php';
+
+/**
+ * Helper function for prettying up errors
+ * @param string $message
+ * @param string $subtitle
+ * @param string $title
+ */
+//TODO: Add link to documentation
+function cld_error($message, $subtitle = '', $title = '') {
+	$title = $title ?: __('Cliendesk &rsaquo; Error', 'cliendesk');
+	$footer = '<a href="#">Link to docs</a>';
+	$message = "<h1>{$title}<br><small>{$subtitle}</small></h1><p>{$message}</p><p>{$footer}</p>";
+	wp_die($message, $title);
 }
+
+/**
+ * Ensure compatible version of PHP is used
+ */
+
+if (version_compare('7.0', phpversion(), '>=')) {
+	cld_error(__('You must be using PHP 7.0 or greater.', 'cliendesk'), __('Invalid PHP version', 'cliendesk'));
+}
+
+/**
+ * Ensure dependencies are loaded
+ */
+
+if (!file_exists($composer = __DIR__.'/vendor/autoload.php')) {
+	cld_error(
+		__('You must run <code>composer install</code> from the plugin directory.', 'cliendesk'),
+		__('Autoloader not found.', 'cliendesk')
+	);
+}
+
+// Require once the Composer Autoload
+require_once $composer;
 
 /**
  * The code that runs during plugin activation
  */
 function activate_clientsdesk_plugin()
 {
-    Inc\Base\Activate::activate();
+	Inc\Base\Activate::activate();
 }
 
 register_activation_hook(__FILE__, 'activate_clientsdesk_plugin');
@@ -58,9 +90,10 @@ function deactivate_clientsdesk_plugin()
 }
 
 register_deactivation_hook(__FILE__, 'deactivate_clientsdesk_plugin');
+
 /**
  * Initialize all the core classes of the plugin
  */
 if (class_exists('Inc\\Init')) {
-    Inc\Init::register_services();
+	Inc\Init::register_services();
 }
