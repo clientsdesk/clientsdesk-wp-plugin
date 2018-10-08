@@ -95,6 +95,7 @@ class WebFormShortcode extends BaseController
         $frm = '<form action="' . admin_url('admin-post.php') . '" method="post">';
         $frm .= '<input type="hidden" name="action" value="process_form">';
         $frm .= '<input type="hidden" name="form_id" value="' . $form_id . '">';
+        $frm .= '<input type="hidden" name="action" value="cld_sendform">';
         $frm .= html_entity_decode($form['web_form']['html']);
         $frm .= '<input type="submit"/>';
         $frm .= '</form>';
