@@ -24,6 +24,6 @@ class Enqueue extends BaseController
 
     function enqueue(){
         wp_register_script( 'clientsdesk-webform-submit-script', $this->plugin_url . "assets/clientsdesk_script.js", array( 'jquery' ), false, true );
-        wp_localize_script( 'clientsdesk-webform-submit-script', 'ajax_url', admin_url( 'admin-ajax.php' ) );
+        wp_localize_script( 'clientsdesk-webform-submit-script', 'cldData', ['ajaxUrl' => admin_url( 'admin-ajax.php' )] );
     }
 }
